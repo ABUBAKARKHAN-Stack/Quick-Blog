@@ -1,0 +1,115 @@
+/* App.css or your stylesheet */
+.browser-css {
+  padding: 1.5rem;
+  /* Adjust padding as needed */
+  background-color: #f9f9f9;
+  /* Example background color */
+  color: #333;
+  /* Default text color */
+  line-height: 1.5;
+
+}
+
+.browser-css h1 {
+  font-size: 2.5em;
+  color: #111;
+  margin-bottom: 0.5em;
+}
+
+.browser-css h2 {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 0.5em;
+}
+
+.browser-css h3 {
+  font-size: 1.75em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.browser-css h4 {
+  font-size: 1.5em;
+  color: #444;
+  margin-bottom: 0.5em;
+}
+
+.browser-css h5 {
+  font-size: 1.25em;
+  color: #555;
+  margin-bottom: 0.5em;
+}
+
+.browser-css h6 {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+.browser-css ul {
+  list-style-type: disc;
+  margin-left: 1.5em;
+}
+
+.browser-css ol {
+  list-style-type: decimal;
+  margin-left: 1.5em;
+}
+
+.browser-css li {
+  margin-bottom: 1em;
+  line-height: 1.75;
+}
+
+.browser-css p {
+  margin-bottom: 1.5em;
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 768px) {
+  .browser-css {
+    padding: 1rem;
+    line-height: 1.5;
+  }
+
+  .browser-css h1 {
+    font-size: 2em;
+  }
+
+  .browser-css h2 {
+    font-size: 1.5em;
+  }
+
+  .browser-css h3 {
+    font-size: 1.25em;
+  }
+
+  .browser-css h4 {
+    font-size: 1em;
+  }
+
+  .browser-css h5 {
+    font-size: 0.875em;
+  }
+
+  .browser-css h6 {
+    font-size: 0.75em;
+  }
+
+  .browser-css ul,
+  .browser-css ol {
+    font-size: 0.875em;
+    ;
+    margin-left: 1em;
+  }
+
+  .browser-css li {
+    margin-bottom: 0.75em;
+  }
+
+  .browser-css p {
+    margin-bottom: 1em;
+    font-size: 0.875em;
+    ;
+  }
+}
