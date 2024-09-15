@@ -12,7 +12,7 @@ import '../Browser.css';
 function Post() {
     const [post, setPost] = useState(null);
     const [showIconsMenu, setShowIconsMenu] = useState("opacity-0 h-0");
-    const [icons, setIcons] = useState(false)
+    const [icons, setIcons] = useState(false);
     const { slug } = useParams();
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
@@ -24,13 +24,10 @@ function Post() {
         .map((name) => name.charAt(0).toUpperCase())
         .join('');
 
+    useEffect(() => {
+        document.title = (post?.title ?? "Post");
+    }, [post]);
 
-      useEffect(() => {
-    document.title = (post?.title ?? "Post");
-}, [post]);
-
-
-    // Fetch post based on slug
     useEffect(() => {
         if (slug) {
             configuration.getPost(slug).then((post) => {
@@ -45,8 +42,6 @@ function Post() {
         }
     }, [slug, navigate]);
 
-      
-
     const deletePost = async () => {
         if (post) {
             const deletePost = await configuration.deletePost(post.$id);
@@ -60,19 +55,14 @@ function Post() {
         }
     };
 
-
-
     // Utility function to format the date as "x minutes/hours/days ago"
     function timeAgo(date) {
         const now = new Date();
         const seconds = Math.floor((now - date) / 1000);
-  
-    
-        // If the date is in the future
-        if (seconds < 0) {
-            return '0 seconds ago';
-        }
-    
+
+        // Small adjustment to handle minor delays
+        const adjustedSeconds = Math.max(seconds - 1, 0);
+
         const intervals = {
             year: 31536000,
             month: 2592000,
@@ -81,18 +71,24 @@ function Post() {
             hour: 3600,
             minute: 60,
         };
-    
+
         for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-            const elapsed = Math.floor(seconds / secondsInUnit);
+            const elapsed = Math.floor(adjustedSeconds / secondsInUnit);
             if (elapsed > 0) {
                 return `${elapsed} ${unit}${elapsed > 1 ? 's' : ''} ago`;
             }
         }
-    
-        // If no unit fits, return seconds ago
-        return `${seconds} second${seconds !== 1 ? 's' : ''} ago`;
+
+        return `${adjustedSeconds} second${adjustedSeconds !== 1 ? 's' : ''} ago`;
     }
-    
+
+    // Debug timestamps
+    useEffect(() => {
+        if (post) {
+            console.log("Post Created At:", post.$createdAt);
+            console.log("Post Updated At:", post.$updatedAt);
+        }
+    }, [post]);
 
     // Formatted creation and update times
     const formattedCreateTime =
@@ -112,7 +108,7 @@ function Post() {
 
     const toggleIconsMenu = () => {
         setShowIconsMenu((prev) => (prev === "opacity-0 h-0" ? "opacity-100 h-fit" : "opacity-0 h-0"));
-        setIcons((prev) => !prev)
+        setIcons((prev) => !prev);
     };
 
     if (!post)
@@ -164,7 +160,6 @@ function Post() {
                         <div className={`flex absolute z-10 md:top-[5.5em] top-[5em] right-4 md:right-6 flex-col justify-center gap-2 w-32 p-2 transition-all duration-200 ease-in-out ${showIconsMenu} rounded-lg backdrop-blur-md bg-black/40 shadow-lg`}>
                             {/* Interaction Buttons */}
                             {isAuthor && (
-
                                 <>
                                     <Link className={`${icons === false ? "hidden" : "flex"}  items-center gap-x-2 p-2 rounded-md transition-colors duration-200 ease-linear hover:bg-white hover:text-black`} to={`/edit-post/${post.$id}`}>
                                         <MdEdit className='text-xl' />
@@ -175,7 +170,6 @@ function Post() {
                                         <p className='text-xs font-semibold'>Delete Post</p>
                                     </button>
                                 </>
-
                             )}
                             <button onClick={downloadPost} className={`${icons === false ? "hidden" : "flex"}  items-center gap-x-2 p-2 rounded-md transition-colors duration-200 ease-linear hover:bg-white hover:text-black`}>
                                 <MdDownloadForOffline className='text-2xl' />
@@ -196,7 +190,6 @@ function Post() {
 
                 {/* Post Title and Content */}
                 <div className="px-1 md:px-4 text-black">
-                    {/* Updated Title Styling */}
                     <h1 className="text-xl md:text-3xl font-bold tracking-wide mb-2 text-gray-900">
                         {post.title}
                     </h1>

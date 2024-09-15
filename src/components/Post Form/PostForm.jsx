@@ -105,7 +105,7 @@ function PostForm({ post }) {
                     </div>
             </div>
             <form
-                className="w-full flex flex-col lg:flex-row bg-white gap-6 px-6 rounded-b-lg shadow-md"
+                className="w-full flex flex-col lg:flex-row mb-20 bg-white gap-6 px-6 rounded-b-lg shadow-md"
                 onSubmit={handleSubmit(submitPostHandler)}
             >
                 {/* Left Section */}
@@ -114,6 +114,7 @@ function PostForm({ post }) {
                     {/* Title Input */}
                     <Input
                         labelText="text-black"
+                        labeltxt=""
                         type="text"
                         label="Title:"
                         placeholder="Enter Title "
@@ -124,6 +125,7 @@ function PostForm({ post }) {
                     {/* Slug Input */}
                     <Input
                         labelText="text-black"
+                        labeltxt=""
                         type="text"
                         label="Slug:"
                         disabled
@@ -176,7 +178,7 @@ function PostForm({ post }) {
                     <Select
                         labelText="text-black"
                         option={["active", "inactive"]}
-                        label="Status"
+                        label="Status:"
                         className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         {...register("status", { required: true })}
                     />

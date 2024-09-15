@@ -4,6 +4,7 @@ import { useId } from 'react'
 function Input({
     label,
     labelText = "text-black",
+    labeltxt = "*",
     className = "",
     type = "text",
     ...props
@@ -11,7 +12,7 @@ function Input({
     const id = useId()
     return (
         <div className='w-full text-sm'>
-            {label && <label htmlFor={id} className={`block text-sm font-medium ${labelText} mb-0.5`}>{label} <span className='text-red-500'>*</span></label>}
+            {label && <label htmlFor={id} className={`block text-sm font-medium ${labelText} mb-0.5`}>{label} <span className='text-red-500'>{labeltxt}</span></label>}
             <input id={id} type={type} ref={ref} {...props}
                 className={`border-[1px] w-full px-3 py-2 rounded-lg text-black bg-transparent ${className}`} />
         </div>
