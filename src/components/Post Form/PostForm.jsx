@@ -14,7 +14,6 @@ function PostForm({ post }) {
     const navigate = useNavigate()
     const userData = useSelector((state) => state.auth.userData)
     const user = userData.user ? userData.user : userData;
-    const userName = user?.name.split(" ").map(name => name.charAt(0).toUpperCase()).join("");
     const userProfileColor = user?.profileColor || "#000000";
 
     useEffect(() => {
@@ -105,7 +104,7 @@ function PostForm({ post }) {
                     </div>
             </div>
             <form
-                className="w-full flex flex-col lg:flex-row mb-20 bg-white gap-6 px-6 rounded-b-lg shadow-md"
+                className="w-full flex flex-col lg:flex-row mb-20 bg-white gap-6 p-6 rounded-b-lg shadow-md"
                 onSubmit={handleSubmit(submitPostHandler)}
             >
                 {/* Left Section */}

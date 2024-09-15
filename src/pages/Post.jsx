@@ -56,39 +56,34 @@ function Post() {
     };
 
     // Utility function to format the date as "x minutes/hours/days ago"
-    function timeAgo(date) {
-        const now = new Date();
-        const seconds = Math.floor((now - date) / 1000);
+   
+        function timeAgo(date) {
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
 
-        // Small adjustment to handle minor delays
-        const adjustedSeconds = Math.max(seconds - 1, 0);
+            // Small adjustment to handle minor delays
+            const adjustedSeconds = Math.max(seconds - 1, 0);
 
-        const intervals = {
-            year: 31536000,
-            month: 2592000,
-            week: 604800,
-            day: 86400,
-            hour: 3600,
-            minute: 60,
-        };
+            const intervals = {
+                year: 31536000,
+                month: 2592000,
+                week: 604800,
+                day: 86400,
+                hour: 3600,
+                minute: 60,
+            };
 
-        for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-            const elapsed = Math.floor(adjustedSeconds / secondsInUnit);
-            if (elapsed > 0) {
-                return `${elapsed} ${unit}${elapsed > 1 ? 's' : ''} ago`;
+            for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+                const elapsed = Math.floor(adjustedSeconds / secondsInUnit);
+                if (elapsed > 0) {
+                    return `${elapsed} ${unit}${elapsed > 1 ? 's' : ''} ago`;
+                }
             }
+
+            return `${adjustedSeconds} second${adjustedSeconds !== 1 ? 's' : ''} ago`;
         }
 
-        return `${adjustedSeconds} second${adjustedSeconds !== 1 ? 's' : ''} ago`;
-    }
 
-    // Debug timestamps
-    useEffect(() => {
-        if (post) {
-            console.log("Post Created At:", post.$createdAt);
-            console.log("Post Updated At:", post.$updatedAt);
-        }
-    }, [post]);
 
     // Formatted creation and update times
     const formattedCreateTime =
