@@ -95,20 +95,6 @@ function PostForm({ post }) {
     }, [slugTransform, watch, setValue]);
 
     return (
-        <>
-            <div className='flex flex-col gap-y-1 justify-center items-center w-full bg-white p-6 rounded-t-lg shadow-md'>
-                <div
-                    className="w-12 h-12 text-2xl rounded-full flex justify-center items-center"
-                    style={{ backgroundColor: userProfileColor }}
-                >
-                    {/* Display author's initial */}
-                    {userName}
-                </div>
-                <p className='text-black font-semibold'>
-                    {user?.name || "Unknown"}
-                </p>
-            </div>
-
             <form
                 className="w-full flex flex-col lg:flex-row bg-white gap-6 p-6 rounded-b-lg shadow-md"
                 onSubmit={handleSubmit(submitPostHandler)}
@@ -196,7 +182,6 @@ function PostForm({ post }) {
                     </Button>
                 </div>
             </form>
-        </>
     )
 }
 
