@@ -5,7 +5,7 @@ import Logo from '../Logo'
 function Footer() {
   return (
 
-    <footer className='w-full mt-20 relative bottom-0  bg-black/40 text-white'>
+    <footer className='w-full mt-20  bg-black/40 text-white'>
       <div className='container mx-auto flex flex-col lg:flex-row items-center justify-between py-8 px-5 lg:px-20'>
 
         {/* Copyright Notice */}
