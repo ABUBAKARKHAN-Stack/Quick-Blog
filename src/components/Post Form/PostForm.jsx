@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import { Input, Button, RTE, Select, Footer } from '../index'
+import { Input, Button, RTE, Select } from '../index'
 import { FaUpload } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'
+import { MdOutlinePostAdd } from "react-icons/md";
 import configuration from '../../appwrite/configuration'
 import fileService from "../../appwrite/fileServices"
 
 function PostForm({ post }) {
-    const { register, handleSubmit, watch, control, reset, setValue , getValues } = useForm()
+    const { register, handleSubmit, watch, control, reset, setValue, getValues } = useForm()
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const userData = useSelector((state) => state.auth.userData)
@@ -85,7 +86,7 @@ function PostForm({ post }) {
     useEffect(() => {
         const subscribe = watch((value, { name }) => {
             if (name === "title") {
-                setValue("slug",  slugTransform(value.title) , { shouldValidate: true });
+                setValue("slug", slugTransform(value.title), { shouldValidate: true });
             }
         });
 
@@ -95,8 +96,16 @@ function PostForm({ post }) {
     }, [slugTransform, watch, setValue]);
 
     return (
+
+        <>
+            <div className='bg-white rounded-t-lg p-6  mt-20 flex gap-x-2 items-center justify-center'>
+                <p className=' text-center text-wrap sm:text-2xl text-xl font-semibold  text-black'> Make Post Here </p>
+                <div className='h-12 w-12 rounded-full bg-black flex justify-center items-center'>
+                    <MdOutlinePostAdd className='text-3xl text-white' />
+                    </div>
+            </div>
             <form
-                className="w-full flex flex-col lg:flex-row bg-white gap-6 p-6 rounded-b-lg shadow-md"
+                className="w-full flex flex-col lg:flex-row bg-white gap-6 px-6 rounded-b-lg shadow-md"
                 onSubmit={handleSubmit(submitPostHandler)}
             >
                 {/* Left Section */}
@@ -182,6 +191,7 @@ function PostForm({ post }) {
                     </Button>
                 </div>
             </form>
+        </>
     )
 }
 
