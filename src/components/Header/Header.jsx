@@ -42,7 +42,7 @@ function Header() {
         <Logo />
 
         {/* Navigation Items */}
-        <ul className='flex flex-row   gap-x-20  items-center gap-y-2 lg:gap-x-6'>
+        <ul className='flex flex-row   gap-x-8  items-center gap-y-2 lg:gap-x-6'>
           {
             navItems.map((navItem) => navItem.active && (
               <NavLink
