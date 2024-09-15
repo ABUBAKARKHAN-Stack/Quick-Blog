@@ -18,7 +18,7 @@ function RTE({ control, defaultValue = "", name, label }) {
         defaultValue={defaultValue}
         render={({ field: { onChange } }) => (
           <Editor
-            apiKey="2j3oz5bi6infjckpnt70x4b9hfyceai1q9e5fj232c8rpprx"
+            apiKey={env.TINYMCEAPIKEY}
             init={{
               height: 300,
               menubar: true,
