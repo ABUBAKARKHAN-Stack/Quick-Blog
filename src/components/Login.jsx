@@ -74,7 +74,7 @@ function Login() {
     return (
         // Sign In Component
         <div className="flex justify-center items-center w-full h-screen">
-            <div className="h-full max-h-[30rem] w-full flex flex-col md:flex-row justify-center items-center">
+            <div className="h-full max-h-[30rem] w-full flex flex-col md:flex-row justify-center items-center px-2 sm:px-0">
                 {/* Left-side (Sign In Information) */}
                 <div className="flex h-full flex-col justify-center items-center gap-y-4 bg-[#000] shadow-lg rounded-t-xl md:rounded-l-xl md:rounded-r-none p-6 w-full max-w-sm">
                     <Logo className="mb-3 w-52" />
