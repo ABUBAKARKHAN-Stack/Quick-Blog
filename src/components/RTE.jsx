@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { Controller } from 'react-hook-form'
 import env from '../ENV-Config/config'
 
-function RTE({ control, defaultValue = "", name, label  }) {
+function RTE({ control, defaultValue = "", name, label }) {
   return (
     <div className="w-full">
       {label && (
@@ -25,12 +25,13 @@ function RTE({ control, defaultValue = "", name, label  }) {
               plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount',
+                'insertdatetime media table paste code help wordcount'
               ],
-              toolbar:
-                'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-              content_style:
-                'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+              toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
             }}
             onEditorChange={onChange}
           />

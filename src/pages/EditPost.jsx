@@ -10,6 +10,10 @@ function EditPost() {
     const [post, setPost] = useState(null)
 
     useEffect(() => {
+        document.title = "QuickBlog | Edit Post | " + slug
+      },[])
+
+    useEffect(() => {
         if (slug) {
             configuration.getPost(slug).then((post) => {
                 if (post) {

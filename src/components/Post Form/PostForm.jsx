@@ -154,6 +154,7 @@ function PostForm({ post }) {
                             type="file"
                             id="customFileInput"
                             className="hidden"
+                            accept="image/*"
                             {...register("image")}
                         />
                         <label

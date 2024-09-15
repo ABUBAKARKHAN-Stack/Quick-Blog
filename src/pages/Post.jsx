@@ -24,6 +24,12 @@ function Post() {
         .map((name) => name.charAt(0).toUpperCase())
         .join('');
 
+
+      useEffect(() => {
+    document.title = (post?.title ?? "Post");
+}, [post]);
+
+
     // Fetch post based on slug
     useEffect(() => {
         if (slug) {
@@ -38,6 +44,8 @@ function Post() {
             navigate('/');
         }
     }, [slug, navigate]);
+
+      
 
     const deletePost = async () => {
         if (post) {

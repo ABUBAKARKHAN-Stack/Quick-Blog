@@ -30,6 +30,10 @@ function Home() {
     fetchPosts()
   }, [])
 
+  useEffect(() => {
+    document.title = "QuickBlog | Home"
+  },[])
+
 
   if (loading) return (
     <Container>
@@ -40,8 +44,8 @@ function Home() {
   if (posts.length <= 0 && authStatus === false) {
     return (
       <Container>
-        <div className='text-3xl w-full h-full justify-center items-center flex flex-col gap-y-2 tracking-widest font-light'>
-          <p>Login to read posts</p>
+        <div className='sm:text-3xl text-2xl w-full h-full justify-center items-center flex flex-col gap-y-2 tracking-widest font-light'>
+          <p className='text-wrap text-center'>Login to read posts</p>
           <BiHappyHeartEyes className='text-5xl' />
         </div>
       </Container>
@@ -51,8 +55,8 @@ function Home() {
   if (posts.length <= 0 && authStatus === true) {
     return (
       <Container>
-        <div className="text-3xl w-full h-full justify-center items-center flex flex-col gap-y-2 tracking-widest font-light">
-          <p>No posts available at the moment.</p>
+        <div className="sm:text-3xl text-2xl w-full h-full justify-center items-center flex flex-col gap-y-2 tracking-widest font-light">
+          <p className='text-wrap text-center'>No posts available at the moment.</p>
           <RiEmotionUnhappyLine className="text-4xl" />
         </div>
       </Container>
