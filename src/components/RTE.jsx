@@ -20,7 +20,7 @@ function RTE({ control, defaultValue = "", name, label }) {
           <Editor
             apiKey={env.TINYMCEAPIKEY}
             init={{
-              height: 300,
+              height: 400,
               menubar: true,
               plugins: [
                 "image",

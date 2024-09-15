@@ -61,7 +61,7 @@ function Header() {
 
           {/* Logout Button */}
           {authStatus && (
-            <li className='hover:text-[#f84e46] cursor-pointer'>
+            <li className='hover:text-[#f84e46]  transition-colors duration-200 ease-linear cursor-pointer'>
               <LogoutBtn />
             </li>
           )}
