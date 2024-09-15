@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { SignUp as SignUpComponent , Container  } from '../components'
+import { SignUp as SignUpComponent   } from '../components'
 
 function Signup() {
 
@@ -8,9 +8,7 @@ function Signup() {
   },[])
 
   return (
-    <Container>
       <SignUpComponent />
-    </Container>
   )
 }
 
